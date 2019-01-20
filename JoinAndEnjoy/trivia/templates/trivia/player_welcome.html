@@ -5,6 +5,11 @@
     <title>Title</title>
 </head>
 <body>
-
+<form method="post">
+    {% csrf_token %}
+    Enter your name
+    <input type="text" name="player_name"/>
+    <button >submit</button>
+</form>
 </body>
 </html>

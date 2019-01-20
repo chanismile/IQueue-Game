@@ -7,4 +7,3 @@ urlpatterns = [
     path('player_welcome', views.player_welcome, name='player_welcome'),
     path('player_answers', views.player_answers, name='player_answers'),
 ]
-
