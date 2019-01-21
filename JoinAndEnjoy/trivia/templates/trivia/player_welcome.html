@@ -1,17 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-<form method="post" novalidate>
-    {% csrf_token %}
-    Enter your name
-    {{form}}
-    <button >submit</button>
-</form>
+{% block title %}
+    Player welcome
+{% endblock %}
 
-</body>
-</html>
+{% block content %}
+
+    <form method="post">
+        {% csrf_token %}
+        Enter your name
+        <input type="text" name="player_name"/>
+        <button>submit</button>
+    </form>
+
+{% endblock %}
