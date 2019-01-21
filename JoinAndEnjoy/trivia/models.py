@@ -11,3 +11,11 @@ class Player(models.Model):
 
    def get_absolute_url(self):
        return reverse("Player:detail", args=(self.id,))
+
+class Questions(models.Model):
+    question = models.TextField(max_length=200)
+    choise_1 = models.TextField(max_length=200)
+    choise_2 = models.TextField(max_length=200)
+    choise_3 = models.TextField(max_length=200)
+    choise_4 = models.TextField(max_length=200)
+    the_choise = models.IntegerField()
