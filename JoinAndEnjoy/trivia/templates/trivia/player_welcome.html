@@ -5,11 +5,20 @@
     <title>Title</title>
 </head>
 <body>
-<form method="post">
+
+<!--<form method="post">-->
+<form method="post" novalidate>
     {% csrf_token %}
-    Enter your name
-    <input type="text" name="player_name"/>
-    <button >submit</button>
+  <!--<div>-->
+    <!--<label >Enter your name </label>-->
+    <!--<input type="text"  name="player_name">-->
+    <!---->
+  <!--</div>-->
+  <div>
+      {{ form.as_ul }}
+    <button>Submit</button>
+  </div>
 </form>
+
 </body>
 </html>
