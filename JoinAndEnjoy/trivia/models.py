@@ -24,7 +24,6 @@ class Question(models.Model):
     correct_choice = models.IntegerField()
 
 
-
 class CurrentQuestion(models.Model):
     q = models.IntegerField(default=1)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
