@@ -3,17 +3,23 @@ from datetime import time
 from django import forms
 from django.views.generic import CreateView
 from django.shortcuts import render, get_object_or_404, redirect
-from trivia.models import Player
+from trivia.models import Player,Questions,Answer
 
 class PlayerForm(forms.ModelForm):
     class Meta:
         model = Player
         fields = "__all__"
 
-def main_screen(request):
-
-    if request.method == "GET":
-        request.session['answer'] = 1
+def main_screen(request, first_time):
+    # if (first_time):
+    #     continue
+    # else:
+    #     o = Questions.objects.get(pk=1)
+    #     o = Answer.objects.filter(pk=1).update()
+    #
+    #
+    # if request.method == "GET":
+    #     request.session['answer'] = 1
     return render(request, "trivia/main_screen.html")
 
 def main_screen_answers(request):
@@ -49,5 +55,6 @@ def player_answers(request):
         }
 
     return render(request, "trivia/player_answers.html", active_view)
+
 
 
