@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Player choices
+{% endblock %}
+
+{% block content %}
+
+    <div class="wrapper {{ active }}">
+
+        <div id="wait">
+            <h1>Wait a minute...</h1>
+        </div>
+
+        <div id="correct">
+            <span>V</span>
+            <h1>Great! <br>Correct answer! :)</h1>
+        </div>
+
+        <div id="incorrect">
+            <span>X</span>
+            <h1>Uh oh<br>Incorrect answer! :(</h1>
+        </div>
+
+        <div id="choices">
+            <form method="post">
+                {% csrf_token %}
+                <button name="choice" value="1">1</button>
+                <button name="choice" value="2">2</button>
+                <button name="choice" value="3">3</button>
+                <button name="choice" value="4">4</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
