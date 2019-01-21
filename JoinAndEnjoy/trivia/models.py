@@ -21,3 +21,9 @@ class Questions(models.Model):
     choise_4 = models.TextField(max_length=200)
     the_choise = models.IntegerField()
 
+class Answer(models.Model):
+    question=models.IntegerField()
+    num_answer=models.IntegerField()
+    time_to_answer=models.DateTimeField('date published')
+    time_to_despla_answer=models.DateTimeField('date published')
+
