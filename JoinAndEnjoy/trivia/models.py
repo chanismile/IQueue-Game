@@ -3,27 +3,29 @@ from django.urls import reverse
 
 
 class Player(models.Model):
-   # id_player=models.IntegerField(default=0)
-   name = models.CharField(max_length=200)
-   # score= models.IntegerField(default=0)
+    # id_player=models.IntegerField(default=0)
+    name = models.CharField(max_length=200)
 
-   def __str__(self):
-       return self.name
+    # score= models.IntegerField(default=0)
 
-   def get_absolute_url(self):
-       return reverse("Player:detail", args=(self.id,))
+    def __str__(self):
+        return self.name
 
-class Questions(models.Model):
+    def get_absolute_url(self):
+        return reverse("Player:detail", args=(self.id,))
+
+
+class Question(models.Model):
     question = models.TextField(max_length=200)
-    choise_1 = models.TextField(max_length=200)
-    choise_2 = models.TextField(max_length=200)
-    choise_3 = models.TextField(max_length=200)
-    choise_4 = models.TextField(max_length=200)
-    the_choise = models.IntegerField()
+    choice_1 = models.TextField(max_length=200)
+    choice_2 = models.TextField(max_length=200)
+    choice_3 = models.TextField(max_length=200)
+    choice_4 = models.TextField(max_length=200)
+    correct_choice = models.IntegerField()
 
-class Answer(models.Model):
-    question=models.IntegerField()
-    num_answer=models.IntegerField()
-    time_to_answer=models.DateTimeField('date published')
-    time_to_despla_answer=models.DateTimeField('date published')
+
+class CurrentQuestion(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    answering_end = models.DateTimeField('date published')
+    display_end = models.DateTimeField('date published')
 
