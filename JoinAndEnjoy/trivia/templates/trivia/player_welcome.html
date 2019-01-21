@@ -6,18 +6,11 @@
 </head>
 <body>
 
-<!--<form method="post">-->
 <form method="post" novalidate>
     {% csrf_token %}
-  <!--<div>-->
-    <!--<label >Enter your name </label>-->
-    <!--<input type="text"  name="player_name">-->
-    <!---->
-  <!--</div>-->
-  <div>
-      {{ form.as_ul }}
-    <button>Submit</button>
-  </div>
+    Enter your name
+    {{form}}
+    <button >submit</button>
 </form>
 
 </body>

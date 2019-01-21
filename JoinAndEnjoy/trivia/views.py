@@ -1,6 +1,12 @@
 from django import forms
-from django.shortcuts import render
+from django.views.generic import CreateView
+from django.shortcuts import render, get_object_or_404, redirect
+from trivia.models import Player
 
+class PlayerForm(forms.ModelForm):
+    class Meta:
+        model = Player
+        fields = "__all__"
 
 
 # class ExpenseForm(forms.ModelForm):
@@ -21,17 +27,14 @@ class ExpenseForm(forms.ModelForm):
 
 def player_welcome(request):
     if request.method == "POST":
-         form = ExpenseForm(request.POST)
-         # assert False, form.cleaned_data
-         if form.is_valid():
-             form.instance.save()
 
-        # Player.objects.create(name=request.POST['player_name'],
-        #                     score=0)
-            # return redirect(form.instance)
-    # return render(request, "trivia/player_welcome.html")
+        form = PlayerForm(request.POST)
+        if form.is_valid():
+            form.instance.save()
+            return redirect(player_answers)
     else:
-        form = ExpenseForm()
+        form = PlayerForm()
+
     return render(request, "trivia/player_welcome.html", {
         'form': form,
     })
