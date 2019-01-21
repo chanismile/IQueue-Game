@@ -1,3 +1,5 @@
+from datetime import time
+
 from django import forms
 from django.views.generic import CreateView
 from django.shortcuts import render, get_object_or_404, redirect
@@ -9,15 +11,10 @@ class PlayerForm(forms.ModelForm):
         fields = "__all__"
 
 
-# class ExpenseForm(forms.ModelForm):
-#     class Meta:
-#         model = Expense
-#         fields = "__all__"
-from trivia.models import Player
-
-
-
 def main_screen(request):
+
+    if request.method == "GET":
+        request.session['answer'] = 1
     return render(request, "trivia/main_screen.html")
 
 def main_screen_answers(request):
@@ -29,6 +26,7 @@ def player_welcome(request):
     if request.method == "POST":
 
         form = PlayerForm(request.POST)
+
         if form.is_valid():
             form.instance.save()
             return redirect(player_answers)
@@ -40,5 +38,18 @@ def player_welcome(request):
     })
 
 def player_answers(request):
-    return render(request, "trivia/player_answers.html")
+    ans = ""
+    if request.method == "POST":
+        if request.session.has_key('answer'):
+            ans = request.session['answer']
+        if request.POST.get('choice') == ans:
+            active = 'active_correct'
+        else:
+            active = 'active_incorrect'
+        active_view = {
+            'active': active
+        }
+
+    return render(request, "trivia/player_answers.html", active_view)
+
 
