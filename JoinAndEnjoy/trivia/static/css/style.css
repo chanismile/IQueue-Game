@@ -1,0 +1,46 @@
+
+.wrapper{
+    color: #fff;
+    text-align: center
+}
+
+.active_wait #wait, .active_correct #correct, .active_incorrect #incorrect{
+    display: block;
+}
+
+#wait, #correct, #incorrect{
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    overflow-y: hidden;
+    background-color: lightblue;
+    font-size: 30px;
+    padding-top: 500px;
+}
+
+#choices button{
+    width: 100%;
+    height: 300px;
+    font-size: 150px;
+    border: none;
+    margin: 20px;
+    color: #fff;
+}
+
+#choices button:nth-of-type(1){
+    background-color: #fcb215;
+}
+
+#choices button:nth-of-type(2){
+    background-color: #49afb4;
+}
+
+#choices button:nth-of-type(3){
+    background-color: #f05b30;
+}
+
+#choices button:nth-of-type(4){
+    background-color: #3c5361;
+}
