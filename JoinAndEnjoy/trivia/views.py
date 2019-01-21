@@ -1,8 +1,29 @@
-from django.shortcuts import render, redirect
+from datetime import time
+
+from django import forms
+from django.views.generic import CreateView
+from django.shortcuts import render, get_object_or_404, redirect
+from trivia.models import Player, Question, CurrentQuestion
+
+class PlayerForm(forms.ModelForm):
+    class Meta:
+        model = Player
+        fields = "__all__"
 
 
-def main_screen(request):
+def main_screen(request, first_time):
+    # if (first_time):
+    #     continue
+    # else:
+    #     o = Questions.objects.get(pk=1)
+    #     c = CurrentQuestion()
+    # if request.method == "GET":
+    #     request.session['answer'] = 1
     return render(request, "trivia/main_screen.html")
+
+def main_screen_answers(request):
+    return render(request,'trivia/main_screen_answers.html')
+
 
 
 def player_welcome(request):
@@ -13,6 +34,20 @@ def player_welcome(request):
 
     return render(request, "trivia/player_welcome.html")
 
+    # TOCHECK - Chani
+    # if request.method == "POST":
+    #
+    #     form = PlayerForm(request.POST)
+    #
+    #     if form.is_valid():
+    #         form.instance.save()
+    #         return redirect(player_answers)
+    # else:
+    #     form = PlayerForm()
+    #
+    # return render(request, "trivia/player_welcome.html", {
+    #     'form': form,
+    # })
 
 def player_choices(request):
 
