@@ -15,14 +15,17 @@ class PlayerForm(forms.ModelForm):
 #         fields = "__all__"
 from trivia.models import Player
 
-
-def main_screen(request):
-    return render(request, "trivia/main_screen.html")
-
 class ExpenseForm(forms.ModelForm):
     class Meta:
         model = Player
         fields = "__all__"
+
+
+def main_screen(request):
+    return render(request, "trivia/main_screen.html")
+
+def main_screen_answers(request):
+    return render(request,'trivia/main_screen_answers.html')
 
 
 def player_welcome(request):
