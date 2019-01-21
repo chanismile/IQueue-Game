@@ -5,11 +5,13 @@
     <title>Title</title>
 </head>
 <body>
-<form method="post">
+
+<form method="post" novalidate>
     {% csrf_token %}
     Enter your name
     {{form}}
     <button >submit</button>
 </form>
+
 </body>
 </html>

@@ -16,9 +16,13 @@ def main_screen(request):
         request.session['answer'] = 1
     return render(request, "trivia/main_screen.html")
 
+def main_screen_answers(request):
+    return render(request,'trivia/main_screen_answers.html')
+
 
 def player_welcome(request):
     if request.method == "POST":
+
         form = PlayerForm(request.POST)
 
         if form.is_valid():
@@ -30,7 +34,6 @@ def player_welcome(request):
     return render(request, "trivia/player_welcome.html", {
         'form': form,
     })
-
 
 def player_answers(request):
     ans = ""

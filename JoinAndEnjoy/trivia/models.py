@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
+
 class Player(models.Model):
    # id_player=models.IntegerField(default=0)
    name = models.CharField(max_length=200)
@@ -19,3 +20,4 @@ class Questions(models.Model):
     choise_3 = models.TextField(max_length=200)
     choise_4 = models.TextField(max_length=200)
     the_choise = models.IntegerField()
+
