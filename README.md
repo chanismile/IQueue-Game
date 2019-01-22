@@ -1,35 +1,30 @@
-# {YOUR PROJECT NAME HERE}
-{ONE LINE PROJECT DESCRIPTION HERE}
+# IQueue
+A fun trivia game for people who stands in line
 
-* {Participant 1 Name}
-* {Participant 2 Name}
-* {Participant 3 Name}
+* Giti Vebber
+* Tali Badichi
+* Chani Glick
 
-{OPTIONAL: MORE PROJECT INFO}
+IQueue is a realy fun game. Whenever our signage is placed, nearby a queue, everyone who waits on the line , boring and sad, can scan a qr-codes which presents on the signage and join the perfect trivia game ever!!! 
 
 ## Screenshots
 
 ![SCREESHOT DECSRIPTION](screenshots/excellenteam-logo.jpeg)
 
-## How to Run This Bot
+## How to Run This Game
 
 ### Prerequisites
-* {EDIT AND ADD MORE DEPENDENCIES HERE}
-* Python 3.7 ???
-* pipenv ???
+* Python 3.7 
+* Django
 
 ### Setup
-* {EDIT THIS}
 * Clone this repo from github
-* Install dependencies: `pipenv install`
 
 ### Run
-{EDIT THIS}
+
 To run this project use:
 
-    pipenv run python main.py
-
-(Or just `python main.py` if running in a pipenv shell.)
+    python manage.py runserver
 
 ## Credits and References
 * {ADD REFERENCES HERE}
