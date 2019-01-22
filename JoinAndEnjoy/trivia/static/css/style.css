@@ -1,3 +1,7 @@
+html, body
+{
+    height: 100%;
+}
 
 body{
     color: #fff;
@@ -5,13 +9,12 @@ body{
     background-color: #a8e2ca;
 }
 
-
 .wrapper{
-    padding-top: 100px;
+
 }
 
-.active_wait #wait, .active_correct #correct, .active_incorrect #incorrect{
-    display: block;
+#player_choices{
+    padding-top: 100px;
 }
 
 #wait, #correct, #incorrect{
@@ -81,10 +84,46 @@ h1{
     line-height: 30px;
 }
 
+#main_screen{
+    position: relative;
+}
+
+
+#main_screen, #main_screen_answers{
+    height: 100%;
+}
+
+#main_screen h1, #main_screen_answers{
+    padding-top: 150px;
+}
+
 #main_screen h1, #main_screen_answers h1{
     font-size: 80px;
+    margin-bottom: 30px;
 }
 
 #main_screen h2, #main_screen_answers h2{
     font-size: 60px;
+}
+
+#main_screen .answers h3{
+    width: 45%;
+    display: inline-block;
+    margin: 20px;
+    border: 2px solid;
+    padding: 20px;
+    text-align: left;
+}
+
+#main_screen .answers h3 span{
+    opacity: 0.5;
+    color: #000;
+    padding-right: 10px;
+}
+
+#main_screen img{
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    width: 100px;
 }
