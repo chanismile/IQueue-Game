@@ -1,8 +1,13 @@
 
-.wrapper{
+body{
     color: #fff;
     text-align: center;
     background-color: #a8e2ca;
+}
+
+
+.wrapper{
+    padding-top: 100px;
 }
 
 .active_wait #wait, .active_correct #correct, .active_incorrect #incorrect{
@@ -14,11 +19,16 @@
     height: 100%;
     width: 100%;
     position: absolute;
-    top: 0px;
+    top: 0;
+    right: 0;
     overflow-y: hidden;
     background-color: #a8e2ca;
     font-size: 30px;
     padding-top: 500px;
+}
+
+h1{
+    font-size: 100px;
 }
 
 #choices button{
@@ -26,12 +36,8 @@
     height: 300px;
     font-size: 150px;
     border: none;
-    margin: 20px;
+    margin: 15px 0;
     color: #fff;
-}
-
-#choices form{
-    background: #a8e2cadb;
 }
 
 #choices button:nth-of-type(1){
@@ -49,4 +55,36 @@
 
 #choices button:nth-of-type(4){
     background-color: #f05b30;
+}
+
+#player_welcome{
+    padding-top: 100px;
+    margin-top: 400px;
+}
+
+#player_welcome input[name="player_name"], #player_welcome button{
+    width: 50%;
+    height: 50px;
+    margin-top: 40px;
+    border: none;
+}
+
+#player_welcome input[name="player_name"]{
+    color: #15868e;
+    padding: 0 10px;
+}
+
+#player_welcome button{
+    background-color: #fcb215;
+    color: #fff;
+    font-size: 30px;
+    line-height: 30px;
+}
+
+#main_screen h1, #main_screen_answers h1{
+    font-size: 80px;
+}
+
+#main_screen h2, #main_screen_answers h2{
+    font-size: 60px;
 }

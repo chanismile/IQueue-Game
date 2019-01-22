@@ -14,7 +14,8 @@
 
         $('button').click(function(){
 
-            $('#wait').show();
+            //$('#wait').show("slow");
+            $('#wait').fadeIn(500);
 
             $('input[name="player_choice"]').val($(this).val());
 
@@ -44,7 +45,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="wrapper {{ active }}">
+    <div class="wrapper">
 
         <div id="wait">
             <h1>Wait a minute...</h1>
@@ -60,16 +61,21 @@
             <h1>Uh oh<br>Incorrect answer! :(</h1>
         </div>
 
+
+
         <div id="choices">
+            <h1>Choose an answer</h1>
+
             <button name="choice" value="1">1</button>
             <button name="choice" value="2">2</button>
             <button name="choice" value="3">3</button>
             <button name="choice" value="4">4</button>
+
             <form method="post">
                 {% csrf_token %}
-                <input type="hidden" name="player_id"></form>
-                <input type="hidden" name="player_choice"></form>
-                <input type="hidden" name="correct_choice" value="{{ correct_choice }}"></form>
+                <input type="hidden" name="player_id" />
+                <input type="hidden" name="player_choice" />
+                <input type="hidden" name="correct_choice" value="{{ correct_choice }}" />
             </form>
         </div>
     </div>

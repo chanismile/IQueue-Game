@@ -23,8 +23,12 @@
 {% endblock %}
 
 {% block content %}
+
+<div id="main_screen_answers">
     <h1>
-        The correct answer is: {{ question.correct_choice }}
+        The correct answer is:
     </h1>
+    <h2>{{ question.correct_choice }}</h2>
+</div>
 
 {% endblock %}

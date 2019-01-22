@@ -23,6 +23,8 @@
 {% endblock %}
 
 {% block content %}
+<div id="main_screen">
+
     <h1>
         {{ question.question }}
     </h1>
@@ -33,4 +35,5 @@
         <h3>{{ question.choice_4 }}</h3>
     </div>
     <img id="qr_code" src="/static/qr.png"/>
+</div>
 {% endblock %}
