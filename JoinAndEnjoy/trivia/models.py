@@ -30,3 +30,8 @@ class CurrentQuestion(models.Model):
     answering_end = models.DateTimeField('date published')
     display_end = models.DateTimeField('date published')
 
+class helper(models.Model):
+    i = models.IntegerField(default=1)
+    first_time = models.IntegerField(default=0)
+    second_time = models.IntegerField(default=0)
+
