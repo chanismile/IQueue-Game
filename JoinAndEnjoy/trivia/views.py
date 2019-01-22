@@ -35,8 +35,7 @@ def main_screen(request, first_time =False, second_time=False):
     #     first_time = True
 
     render(request, "trivia/main_screen.html")
-    return redirect("main_screen",first_time,second_time)
-
+    return redirect("main_screen", first_time, second_time)
 
 
 def main_screen_answers(request):
@@ -68,11 +67,11 @@ def player_welcome(request):
 
 
 def player_choices(request):
-    end_time = CurrentQuestion.objects.get(q=1).answering_end
-
+    end_time = CurrentQuestion.objects.first().answering_end
     if timezone.now() > end_time:
         active = ''#
         if request.method == "POST":
+            print(f"date: $$$$$$$$$$$$$$$$$$$")
             request.session['player_choice'] = request.POST.get('choice')
             # return redirect("player_choices")
         elif request.POST.get('choice'):
@@ -82,20 +81,20 @@ def player_choices(request):
         #     return redirect("player_choices")
 
         # render(request, "trivia/player_choices", active_view)
-        return redirect("player_choices")
-    else:
-        cq = CurrentQuestion.objects.get(q=1)
-        # q = Question.objects.get(id=cq.question)
-        correct_answer = cq.question.correct_choice
-
-        if request.POST.get('choice') == correct_answer:
-            active = 'active_correct'
-        else:
-            active = 'active_incorrect'
-        active_view = {
-            'active': active
-        }
-        return render(request, "trivia/player_choices.html", active_view)
+        # return redirect("player_choices")
+    # else:
+    #     cq = CurrentQuestion.objects.get(q=1)
+    #     # q = Question.objects.get(id=cq.question)
+    #     correct_answer = cq.question.correct_choice
+    #
+    #     if request.POST.get('choice') == correct_answer:
+    #         active = 'active_correct'
+    #     else:
+    #         active = 'active_incorrect'
+    #     active_view = {
+    #         'active': active
+    #     }
+    return render(request, "trivia/player_choices.html")
 
     # return render(request, "trivia/player_choices.html", active_view)
 
