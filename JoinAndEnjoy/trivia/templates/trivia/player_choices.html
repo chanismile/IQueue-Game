@@ -4,8 +4,46 @@
     Player choices
 {% endblock %}
 
-{% block content %}
 
+{% block script %}
+<script>
+    $(function() {
+
+        var player_id = sessionStorage.getItem("player_id");
+        $('input[name="player_id"]').val(player_id);
+
+        $('button').click(function(){
+
+            $('#wait').show();
+
+            $('input[name="player_choice"]').val($(this).val());
+
+        });
+
+
+        setTimeout(function(){
+
+            var correct_choice = $('input[name="correct_choice"]').val();
+
+            if($('input[name="player_choice"]').val() == correct_choice)
+                $('#correct').show("slow");
+            else
+                $('#incorrect').show("slow");
+
+            setTimeout(function(){
+                $('form').submit();
+            }, 2000);
+
+
+        }, 3000);
+
+    });
+
+
+</script>
+{% endblock %}
+
+{% block content %}
     <div class="wrapper {{ active }}">
 
         <div id="wait">
@@ -23,12 +61,15 @@
         </div>
 
         <div id="choices">
+            <button name="choice" value="1">1</button>
+            <button name="choice" value="2">2</button>
+            <button name="choice" value="3">3</button>
+            <button name="choice" value="4">4</button>
             <form method="post">
                 {% csrf_token %}
-                <button name="choice" value="1">1</button>
-                <button name="choice" value="2">2</button>
-                <button name="choice" value="3">3</button>
-                <button name="choice" value="4">4</button>
+                <input type="hidden" name="player_id"></form>
+                <input type="hidden" name="player_choice"></form>
+                <input type="hidden" name="correct_choice" value="{{ correct_choice }}"></form>
             </form>
         </div>
     </div>
