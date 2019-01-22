@@ -16,57 +16,76 @@ class PlayerForm(forms.ModelForm):
         fields = "__all__"
 
 
+# def main_screen(request):
+#     h = helper.objects.first()
+#     if h.first_time:
+#         print("ggggggggggg\n")
+#         utc = pytz.UTC
+#         answering_end = CurrentQuestion.objects.get(q=1).answering_end.replace(tzinfo=utc)
+#         now = datetime.datetime.now().replace(tzinfo=utc)
+#         if now > answering_end:
+#             if h.second_time:
+#                 utc = pytz.UTC
+#                 display_end = CurrentQuestion.objects.get(q=1).display_end.replace(tzinfo=utc)
+#                 now2 = datetime.datetime.now().replace(tzinfo=utc)
+#                 if now2 > display_end:
+#                     helper.objects.filter(i=1).update(first_time=0,second_time=0)
+#                     print("wowowowowo\n")
+#                     return redirect("main_screen")
+#                 else:
+#                     helper.objects.filter(i=1).update(first_time=1,second_time=1)
+#                     print(f"bigbig {now} vs {display_end}\n")
+#                     # render(request, "trivia/main_screen_answers.html")
+#                     return redirect("main_screen")
+#             else:
+#                 render(request, "trivia/main_screen_answers.html")
+#                 now = datetime.datetime.now()
+#                 total = now + datetime.timedelta(0,1)
+#                 CurrentQuestion.objects.filter(q=1).update(display_end=total.replace(tzinfo=timezone.utc).astimezone(tz=None))
+#                 print("display_end\n")
+#
+#                 helper.objects.filter(i=1).update(second_time=1)
+#                 return redirect("main_screen")
+#
+#     else:
+#         print("wewewewewewewewe\n")
+#         o = Question.objects.get(pk=1)
+#         # now = datetime.datetime.now()
+#         now = timezone.now()
+#         total = now + datetime.timedelta(0, 1)
+#         CurrentQuestion.objects.filter(q=1).update(question=o,answering_end=total.replace(tzinfo=timezone.utc).astimezone(tz=None))
+#         helper.objects.filter(i=1).update(first_time=1)
+#         print("upupup\n")
+#         # help = helper.objects.get(pk=1)
+#         # help.first_time = 1
+#         # help.save()
+#     render(request, "trivia/main_screen.html")
+#
+#     return redirect("main_screen")
+
+
+class MainForm(forms.ModelForm):
+    class Meta:
+        model = Question
+        fields = "__all__"
+
 def main_screen(request):
-    h = helper.objects.first()
-    if h.first_time:
-        print("ggggggggggg\n")
-        utc = pytz.UTC
-        answering_end = CurrentQuestion.objects.get(q=1).answering_end.replace(tzinfo=utc)
-        now = datetime.datetime.now().replace(tzinfo=utc)
-        if now > answering_end:
-            if h.second_time:
-                utc = pytz.UTC
-                display_end = CurrentQuestion.objects.get(q=1).display_end.replace(tzinfo=utc)
-                now2 = datetime.datetime.now().replace(tzinfo=utc)
-                if now2 > display_end:
-                    helper.objects.filter(i=1).update(first_time=0,second_time=0)
-                    print("wowowowowo\n")
-                    return redirect("main_screen")
-                else:
-                    helper.objects.filter(i=1).update(first_time=1,second_time=1)
-                    print(f"bigbig {now} vs {display_end}\n")
-                    # render(request, "trivia/main_screen_answers.html")
-                    return redirect("main_screen")
-            else:
-                render(request, "trivia/main_screen_answers.html")
-                now = datetime.datetime.now()
-                total = now + datetime.timedelta(0,1)
-                CurrentQuestion.objects.filter(q=1).update(display_end=total.replace(tzinfo=timezone.utc).astimezone(tz=None))
-                print("display_end\n")
-
-                helper.objects.filter(i=1).update(second_time=1)
-                return redirect("main_screen")
-
+    if request.method == "POST":
+        form = \
+            (request.POST)
+        if form.is_valid():
+            form.instance.save()
+            return redirect(form.instance)
     else:
-        print("wewewewewewewewe\n")
-        o = Question.objects.get(pk=1)
-        # now = datetime.datetime.now()
-        now = timezone.now()
-        total = now + datetime.timedelta(0, 1)
-        CurrentQuestion.objects.filter(q=1).update(question=o,answering_end=total.replace(tzinfo=timezone.utc).astimezone(tz=None))
-        helper.objects.filter(i=1).update(first_time=1)
-        print("upupup\n")
-        # help = helper.objects.get(pk=1)
-        # help.first_time = 1
-        # help.save()
-    render(request, "trivia/main_screen.html")
+        form = MainForm()
 
-    return redirect("main_screen")
+    return render(request, "trivia/main_screen.html", {
+        'form': form,
+    })
 
+# def main_screen_answers(request):
 
-
-def main_screen_answers(request):
-    return render(request,'trivia/main_screen_answers.html')
+    # return render(request,'trivia/main_screen_answers.html')
 
 
 def player_welcome(request):
