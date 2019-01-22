@@ -29,12 +29,17 @@
     color: #fff;
 }
 
+#choices form{
+    background: #a8e2cadb;
+}
+
 #choices button:nth-of-type(1){
     background-color: #fcb215;
 }
 
 #choices button:nth-of-type(2){
     background-color: #49afb4;
+    background-color: #FFEB3B;
 }
 
 #choices button:nth-of-type(3){
@@ -43,4 +48,5 @@
 
 #choices button:nth-of-type(4){
     background-color: #3c5361;
+    background-color: #15868e;
 }

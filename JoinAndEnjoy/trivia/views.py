@@ -8,10 +8,12 @@ from django.shortcuts import render, get_object_or_404, redirect
 
 from trivia.models import Player, Question, CurrentQuestion
 
+
 class PlayerForm(forms.ModelForm):
     class Meta:
         model = Player
         fields = "__all__"
+
 
 def main_screen(request, first_time =False, second_time=False):
     # if first_time:
@@ -70,9 +72,9 @@ def player_choices(request):
     if timezone.now() > end_time:
         active = ''#
         if request.method == "POST":
-            print(f"date: $$$$$$$$$$$$$$$$$$$")
             request.session['player_choice'] = request.POST.get('choice')
             # return redirect("player_choices")
+
         elif request.POST.get('choice'):
             active = 'active_wait'
 
@@ -81,20 +83,23 @@ def player_choices(request):
 
         # render(request, "trivia/player_choices", active_view)
         # return redirect("player_choices")
-    # else:
-    #     cq = CurrentQuestion.objects.get(q=1)
-    #     # q = Question.objects.get(id=cq.question)
-    #     correct_answer = cq.question.correct_choice
-    #
-    #     if request.POST.get('choice') == correct_answer:
-    #         active = 'active_correct'
-    #     else:
-    #         active = 'active_incorrect'
-    #     active_view = {
-    #         'active': active
-    #     }
-    return render(request, "trivia/player_choices.html")
+    else:
 
-    # return render(request, "trivia/player_choices.html", active_view)
+        if request.session['player_choice']:
+
+            cq = CurrentQuestion.objects.get(q=1)
+            # q = Question.objects.get(id=cq.question)
+            correct_answer = cq.question.correct_choice
+
+            if request.session['player_choice'] == correct_answer:
+                active = 'active_correct'
+            else:
+                active = 'active_incorrect'
+
+    # return render(request, "trivia/player_choices.html")
+    active_view = {
+        'active': active
+    }
+    return render(request, "trivia/player_choices.html", active_view)
 
 
