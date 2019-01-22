@@ -9,7 +9,11 @@ IQueue is a realy fun game. Whenever our signage is placed, nearby a queue, ever
 
 ## Screenshots
 
-![SCREESHOT DECSRIPTION](screenshots/excellenteam-logo.jpeg)
+![The Signage](screenshots/main.png)
+
+![Join The Game](screenshots/player_welcome.png)
+
+![The Chaices](screenshots/player_choices.png)
 
 ## How to Run This Game
 
