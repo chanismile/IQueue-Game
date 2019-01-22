@@ -1,5 +1,7 @@
 import datetime
 from datetime import time
+
+from django.http import HttpResponse
 from django.utils import timezone
 
 from django import forms
@@ -44,6 +46,10 @@ def main_screen_answers(request):
 
 
 def player_welcome(request):
+
+
+
+
     if request.method == "POST":
         p = Player.objects.create(name=request.POST['name'])
         request.session['player_id'] = p.id
@@ -68,38 +74,10 @@ def player_welcome(request):
 
 
 def player_choices(request):
-    end_time = CurrentQuestion.objects.first().answering_end
-    if timezone.now() > end_time:
-        active = ''#
-        if request.method == "POST":
-            request.session['player_choice'] = request.POST.get('choice')
-            # return redirect("player_choices")
+    question = CurrentQuestion.objects.first().question
+    correct_choice = Question.objects.get(id=question.id).correct_choice
+    return render(request, "trivia/player_choices.html", {'correct_choice': correct_choice, })
 
-        elif request.POST.get('choice'):
-            active = 'active_wait'
 
-        # else:
-        #     return redirect("player_choices")
-
-        # render(request, "trivia/player_choices", active_view)
-        # return redirect("player_choices")
-    else:
-
-        if request.session['player_choice']:
-
-            cq = CurrentQuestion.objects.get(q=1)
-            # q = Question.objects.get(id=cq.question)
-            correct_answer = cq.question.correct_choice
-
-            if request.session['player_choice'] == correct_answer:
-                active = 'active_correct'
-            else:
-                active = 'active_incorrect'
-
-    # return render(request, "trivia/player_choices.html")
-    active_view = {
-        'active': active
-    }
-    return render(request, "trivia/player_choices.html", active_view)
 
 
