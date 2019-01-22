@@ -6,7 +6,7 @@ from django.utils import timezone
 import pytz
 
 from django import forms
-from django.views.generic import CreateView
+from django.views.generic import CreateView, TemplateView
 from django.shortcuts import render, get_object_or_404, redirect
 
 from trivia.models import Player, Question, CurrentQuestion, helper
