@@ -5,14 +5,13 @@ from django.utils import timezone
 from django import forms
 from django.views.generic import CreateView
 from django.shortcuts import render, get_object_or_404, redirect
-from trivia.models import Player, Question, CurrentQuestion
 
+from trivia.models import Player, Question, CurrentQuestion
 
 class PlayerForm(forms.ModelForm):
     class Meta:
         model = Player
         fields = "__all__"
-
 
 def main_screen(request, first_time =False, second_time=False):
     # if first_time:
@@ -97,4 +96,5 @@ def player_choices(request):
     return render(request, "trivia/player_choices.html")
 
     # return render(request, "trivia/player_choices.html", active_view)
+
 
