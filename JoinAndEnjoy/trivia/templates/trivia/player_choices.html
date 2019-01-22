@@ -8,7 +8,6 @@
 {% block script %}
 <script>
     $(function() {
-
         var player_id = sessionStorage.getItem("player_id");
         $('input[name="player_id"]').val(player_id);
 
@@ -67,9 +66,9 @@
             <button name="choice" value="4">4</button>
             <form method="post">
                 {% csrf_token %}
-                <input type="hidden" name="player_id"></form>
-                <input type="hidden" name="player_choice"></form>
-                <input type="hidden" name="correct_choice" value="{{ correct_choice }}"></form>
+                <input type="hidden" name="player_choice"/>
+                <input type="hidden" name="correct_choice" value="{{ correct_choice }}"/>
+                <input type="hidden" name="player_id" value="{{ request.session.player_id }}"/>
             </form>
         </div>
     </div>
