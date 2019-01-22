@@ -1,13 +1,30 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <div>
-        <h1>The correct answer is:</h1>
-    </div>
-</body>
-</html>
+{% block title %}
+    Player choices
+{% endblock %}
+
+
+{% block script %}
+<script>
+    $(function() {
+
+        setTimeout(function(){
+
+
+            window.location.href = "main_screen";
+
+        }, 4000);
+
+    });
+
+
+</script>
+{% endblock %}
+
+{% block content %}
+    <h1>
+        The correct answer is: {{ question.correct_choice }}
+    </h1>
+
+{% endblock %}
