@@ -9,10 +9,12 @@ from django.shortcuts import render, get_object_or_404, redirect
 
 from trivia.models import Player, Question, CurrentQuestion, helper
 
+
 class PlayerForm(forms.ModelForm):
     class Meta:
         model = Player
         fields = "__all__"
+
 
 def main_screen(request):
     h = helper.objects.first()
@@ -58,6 +60,7 @@ def main_screen(request):
         # help.first_time = 1
         # help.save()
     render(request, "trivia/main_screen.html")
+
     return redirect("main_screen")
 
 
@@ -91,13 +94,13 @@ def player_welcome(request):
 
 
 def player_choices(request):
-    end_time = CurrentQuestion.objects.get(q=1).answering_end
-
+    end_time = CurrentQuestion.objects.first().answering_end
     if timezone.now() > end_time:
         active = ''#
         if request.method == "POST":
             request.session['player_choice'] = request.POST.get('choice')
             # return redirect("player_choices")
+
         elif request.POST.get('choice'):
             active = 'active_wait'
 
@@ -105,21 +108,24 @@ def player_choices(request):
         #     return redirect("player_choices")
 
         # render(request, "trivia/player_choices", active_view)
-        return redirect("player_choices")
+        # return redirect("player_choices")
     else:
-        cq = CurrentQuestion.objects.get(q=1)
-        # q = Question.objects.get(id=cq.question)
-        correct_answer = cq.question.correct_choice
 
-        if request.POST.get('choice') == correct_answer:
-            active = 'active_correct'
-        else:
-            active = 'active_incorrect'
-        active_view = {
-            'active': active
-        }
-        return render(request, "trivia/player_choices.html", active_view)
+        if request.session['player_choice']:
 
-    # return render(request, "trivia/player_choices.html", active_view)
+            cq = CurrentQuestion.objects.get(q=1)
+            # q = Question.objects.get(id=cq.question)
+            correct_answer = cq.question.correct_choice
+
+            if request.session['player_choice'] == correct_answer:
+                active = 'active_correct'
+            else:
+                active = 'active_incorrect'
+
+    # return render(request, "trivia/player_choices.html")
+    active_view = {
+        'active': active
+    }
+    return render(request, "trivia/player_choices.html", active_view)
 
 
