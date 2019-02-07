@@ -30,6 +30,5 @@ To run this project use:
 
     python manage.py runserver
 
-## Credits and References
-* {ADD REFERENCES HERE}
+
 
