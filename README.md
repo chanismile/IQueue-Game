@@ -5,7 +5,7 @@ A fun trivia game for people who stands in line
 * Tali Badichi
 * Chani Glick
 
-IQueue is a realy fun game. Whenever our signage is placed, nearby a queue, everyone who waits on the line , boring and sad, can scan a qr-codes which presents on the signage and join the perfect trivia game ever!!! 
+IQueue is a realy fun game that intended to be presents on signage Whenever our signage is placed, nearby a queue, everyone who stant in line, boring and sad, can scan a qr-codes which presents on the signage and join the perfect trivia game ever!!! 
 
 ## Screenshots
 
